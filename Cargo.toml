@@ -1,0 +1,8 @@
+[package]
+name = "yt_mp3_downloader"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = "1.42.0"
+yt-dlp = { version =  "1.2.3", features =  ["tracing"]}
