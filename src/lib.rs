@@ -35,7 +35,7 @@ pub fn download_music(url: &str) -> Result<(), Box<dyn Error>> {
 
     std::fs::create_dir_all(&output_dir)?;
 
-    let format_id = "600";
+    let format_id = "249";
 
     let output_template = output_dir.join("%(title)s.%(ext)s");
     let output_template = output_template.to_str().unwrap();
