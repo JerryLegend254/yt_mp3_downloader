@@ -4,6 +4,8 @@ use std::io::Read;
 use std::path::PathBuf;
 use std::process::Command;
 
+use yt_dlp::Youtube;
+
 pub fn run(config: AppConfig) -> Result<(), Box<dyn Error>> {
     let mut fh = File::open(config.yt_links)?;
 
@@ -15,6 +17,14 @@ pub fn run(config: AppConfig) -> Result<(), Box<dyn Error>> {
         download_music(url)?
     }
     println!("Finished downloading songs!");
+    Ok(())
+}
+
+pub async fn install_binaries() -> Result<(), Box<dyn std::error::Error>> {
+    let executables_dir = PathBuf::from("libs");
+    let output_dir = PathBuf::from("output");
+
+    let _fetcher = Youtube::with_new_binaries(executables_dir, output_dir).await?;
     Ok(())
 }
 
